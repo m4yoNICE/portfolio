@@ -6,6 +6,9 @@ const sora = Sora({ subsets: ["latin"] });
 export const metadata = {
   title: "Portfolio",
   description: "My developer portfolio",
+  icons: {
+    icon: "/takodachi_boat.png",
+  },
 };
 
 export default function RootLayout({
