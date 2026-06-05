@@ -92,9 +92,7 @@ export default function Hero() {
               </span>
             </h1>
             <p className="text-[#7a6f8a] text-base md:text-lg leading-relaxed">
-              BSIT graduate building web apps and ML systems.
-              <br />
-              Cebu-based, open to remote.
+              BSIT graduate building web apps and chasing better problems.
             </p>
           </div>
 
