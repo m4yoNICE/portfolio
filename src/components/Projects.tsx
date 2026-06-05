@@ -1,4 +1,5 @@
 import ProjectCard from "./ui/ProjectCard";
+import Reveal from "./ui/Reveal";
 
 const projects = [
   {
@@ -44,10 +45,20 @@ const projects = [
     title: "Pawnalysis",
     date: "May 2026",
     description:
-      "Chess analysis web app that turns raw Stockfish UCI output into human-readable prose using an LLM. Paste a PGN, get back a full game breakdown.",
+      "Chess analysis web app that turns raw Stockfish UCI output into human-readable prose using an LLM. Paste a PGN, get back a full game breakdown. Currently in development.",
     tags: ["Next.js", "FastAPI", "Stockfish", "Python"],
     githubUrl: "https://github.com/m4yoNICE/Pawnalysis",
     imageUrl: "/projects/Pawnalysis.png",
+  },
+  {
+    category: "Personal Project",
+    title: "Mangananggal",
+    date: "2024",
+    description:
+      "Manga browsing app built as a practice project for learning REST APIs. Fetches data from the MangaDex API with a React frontend and an Express/Node.js backend connected to MySQL.",
+    tags: ["React", "Express", "Node.js", "MySQL"],
+    githubUrl: "https://github.com/m4yoNICE/Mangananggal",
+    imageUrl: "/projects/Mangananggal.png",
   },
 ];
 
@@ -55,15 +66,19 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 bg-white">
       <div className="max-w-5xl mx-auto px-6">
-        <p className="text-xs font-semibold text-[#F29A30] tracking-widest uppercase mb-2">
-          What I built
-        </p>
-        <h2 className="font-['Sora'] text-3xl font-bold text-[#575068] mb-10">
-          Projects
-        </h2>
+        <Reveal>
+          <p className="text-xs font-semibold text-[#F29A30] tracking-widest uppercase mb-2">
+            What I built
+          </p>
+          <h2 className="font-['Sora'] text-3xl font-bold text-[#575068] mb-10">
+            Projects
+          </h2>
+        </Reveal>
         <div className="flex flex-col gap-6">
-          {projects.map((p) => (
-            <ProjectCard key={p.title} {...p} />
+          {projects.map((p, i) => (
+            <Reveal key={p.title} delay={i * 100}>
+              <ProjectCard {...p} />
+            </Reveal>
           ))}
         </div>
       </div>

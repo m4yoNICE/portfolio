@@ -37,7 +37,7 @@ export default function ProjectCard({
       {/* Content */}
       <div className="w-full md:w-[55%] flex flex-col space-y-4">
         {/* Header */}
-        <div className="flex justify-between items-start w-full gap-4">
+        <div className="flex flex-col gap-3 w-full">
           <div className="space-y-1">
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#F29A30] block">
               {category}
@@ -48,8 +48,8 @@ export default function ProjectCard({
             <p className="text-xs text-[#a897b5] font-medium">{date}</p>
           </div>
 
-          {/* Buttons — only render if url provided */}
-          <div className="flex gap-2 shrink-0">
+          {/* Buttons */}
+          <div className="flex gap-2 flex-wrap">
             {demoUrl && (
               <a
                 href={demoUrl}
