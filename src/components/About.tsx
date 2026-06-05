@@ -54,12 +54,38 @@ export default function About() {
         </Reveal>
 
         <Reveal delay={100}>
-          <p className="text-[#c4b8d4] text-lg leading-relaxed max-w-2xl mb-10">
-            BSIT graduate from UC Lapu-Lapu and Mandaue. I build full-stack web
-            apps and ML systems using React Native, Next.js, FastAPI, and
-            Node.js. Recently completed my OJT at Symph Inc. working on a
-            fintech budgeting product.
-          </p>
+          {/* eslint-disable react/no-unescaped-entities */}
+          <div className="text-[#c4b8d4] text-lg leading-relaxed max-w-2xl mb-10 space-y-4">
+            <p>
+              I'm Roswell, an honor graduate with a BSIT from UC Lapu-Lapu and
+              Mandaue in Cebu, Philippines. I build full-stack web applications
+              and machine learning systems — the kind of projects that have real
+              moving parts and actual problems to solve.
+            </p>
+            <p>
+              My stack centers around Next.js, React Native, FastAPI, and
+              Node.js, but I'm less attached to tools than I am to understanding
+              how things work under the hood. That curiosity is what led me to
+              build DermaScan — an ML-powered skin condition classifier where I
+              handled the entire AI pipeline solo, from embedding extraction to
+              deployment on HuggingFace Spaces. It's also what pushed me to
+              build Pawnalyze, a chess analysis web app that combines Stockfish
+              with LLM-generated explanations to make engine analysis actually
+              readable — a project that started from years of playing
+              competitive chess.
+            </p>
+            <p>
+              I recently completed my OJT at Symph Inc., where I worked on Daily
+              Drip, a fintech budgeting product. That experience put me inside a
+              real production codebase — shipping UI fixes, handling PRs, and
+              learning what it means to write code other people depend on.
+            </p>
+            <p>
+              I'm currently based in Cebu and actively looking for a team to
+              grow with.
+            </p>
+          </div>
+          {/* eslint-enable react/no-unescaped-entities */}
         </Reveal>
 
         {/* Stats */}
