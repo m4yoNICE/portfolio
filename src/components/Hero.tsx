@@ -108,7 +108,7 @@ export default function Hero() {
                 View Projects
               </a>
               <a
-                href="/Resume.pdf"
+                href="/Ceniza_CV.pdf"
                 className="text-sm md:text-base text-[#7a6f8a] border border-[#e5e0ee] px-6 md:px-8 py-3 md:py-4 rounded-md hover:border-[#575068] transition-colors"
               >
                 Download CV
@@ -116,7 +116,7 @@ export default function Hero() {
             </div>
             <div className="flex gap-6 justify-center md:justify-end">
               <a
-                href="mailto:youremail@gmail.com"
+                href="mailto:cenizaroswellrey@gmail.com"
                 className="text-[#7a6f8a] hover:text-[#575068] transition-colors"
                 aria-label="Email"
               >
@@ -132,7 +132,7 @@ export default function Hero() {
                 <FiGithub size={24} />
               </a>
               <a
-                href="https://linkedin.com/in/yourprofile"
+                href="https://www.linkedin.com/in/roswell-rey-ceniza-674478333/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#7a6f8a] hover:text-[#575068] transition-colors"
