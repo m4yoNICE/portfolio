@@ -69,30 +69,6 @@ export default function About() {
           {/* eslint-enable react/no-unescaped-entities */}
         </Reveal>
 
-        {/* Stats */}
-        <Reveal delay={200}>
-          <div className="flex gap-12 mb-16">
-            <div>
-              <p className="font-['Sora'] text-3xl font-bold text-[#F29A30]">
-                2+
-              </p>
-              <p className="text-sm text-[#c4b8d4]">Years building</p>
-            </div>
-            <div>
-              <p className="font-['Sora'] text-3xl font-bold text-[#F29A30]">
-                5+
-              </p>
-              <p className="text-sm text-[#c4b8d4]">Projects shipped</p>
-            </div>
-            <div>
-              <p className="font-['Sora'] text-3xl font-bold text-[#F29A30]">
-                1
-              </p>
-              <p className="text-sm text-[#c4b8d4]">OJT completed</p>
-            </div>
-          </div>
-        </Reveal>
-
         {/* Skills */}
         <Reveal delay={300}>
           <p className="text-xs font-semibold text-[#F29A30] tracking-widest uppercase mb-2">

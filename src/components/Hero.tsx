@@ -1,8 +1,10 @@
 "use client";
 import { useEffect, useRef, useState, useCallback } from "react";
 import Wave from "react-wavify";
-import { FiMail, FiGithub, FiLinkedin } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import Image from "next/image";
+
+import EmailToast from "./ui/EmailToast";
 
 export default function Hero() {
   const boatRef = useRef<HTMLDivElement>(null);
@@ -12,6 +14,9 @@ export default function Hero() {
   const dragStartX = useRef(0);
   const dragStartPos = useRef(25);
   const lastTime = useRef<number | null>(null);
+  const [copied, setCopied] = useState(false);
+  const [photoState, setPhotoState] = useState<"normal" | "gif">("normal");
+  const [flipping, setFlipping] = useState(false);
 
   useEffect(() => {
     let frame: number;
@@ -61,6 +66,24 @@ export default function Hero() {
     [dragging],
   );
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText("cenizaroswellrey@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handlePhotoClick = () => {
+    if (flipping) return;
+    setFlipping(true);
+    setTimeout(() => {
+      setPhotoState((prev) => (prev === "normal" ? "gif" : "normal"));
+      setFlipping(false);
+    }, 300);
+  };
+
+  const photoSrc = photoState === "gif" ? "/takover.gif" : "/roswell.png";
+  const isGif = photoState === "gif";
+
   const boatBottom = 160 - 10;
 
   return (
@@ -100,6 +123,7 @@ export default function Hero() {
             className="flex flex-col gap-4"
             style={{ animation: "fadeUp 0.6s ease 150ms both forwards" }}
           >
+            {/* CTA Buttons */}
             <div className="flex gap-3 justify-center md:justify-end">
               <a
                 href="#projects"
@@ -114,14 +138,16 @@ export default function Hero() {
                 Download CV
               </a>
             </div>
-            <div className="flex gap-6 justify-center md:justify-end">
-              <a
-                href="mailto:cenizaroswellrey@gmail.com"
+
+            {/* Social row */}
+            <div className="flex items-center gap-4 justify-center md:justify-end">
+              <button
+                onClick={handleCopy}
                 className="text-[#7a6f8a] hover:text-[#575068] transition-colors"
-                aria-label="Email"
+                aria-label="Copy email"
               >
-                <FiMail size={24} />
-              </a>
+                <FiMail size={30} />
+              </button>
               <a
                 href="https://github.com/m4yoNICE"
                 target="_blank"
@@ -129,7 +155,7 @@ export default function Hero() {
                 className="text-[#7a6f8a] hover:text-[#575068] transition-colors"
                 aria-label="GitHub"
               >
-                <FiGithub size={24} />
+                <FiGithub size={30} />
               </a>
               <a
                 href="https://www.linkedin.com/in/roswell-rey-ceniza-674478333/"
@@ -138,21 +164,33 @@ export default function Hero() {
                 className="text-[#7a6f8a] hover:text-[#575068] transition-colors"
                 aria-label="LinkedIn"
               >
-                <FiLinkedin size={24} />
+                <FiLinkedin size={30} />
               </a>
             </div>
           </div>
         </div>
 
+        {/* Photo */}
         <div
-          className="flex-shrink-0 w-[200px] h-[240px] md:w-[360px] md:h-[420px] relative overflow-hidden rounded-lg mx-auto md:mx-0 mb-6 md:mb-0"
-          style={{ animation: "fadeUp 0.6s ease 300ms both forwards" }}
+          onClick={handlePhotoClick}
+          className="flex-shrink-0 w-[200px] h-[240px] md:w-[360px] md:h-[420px] relative overflow-hidden rounded-lg mx-auto md:mx-0 mb-6 md:mb-0 cursor-pointer select-none"
+          style={{
+            animation: "fadeUp 0.6s ease 300ms both forwards",
+            transform: flipping ? "rotateY(90deg)" : "rotateY(0deg)",
+            transition: "transform 0.3s ease",
+            perspective: "1000px",
+          }}
         >
           <Image
-            src="/roswell.png"
+            key={photoSrc}
+            src={photoSrc}
             alt="Roswell"
             fill
-            className="object-cover object-top"
+            className={`transition-opacity duration-300 select-none ${
+              isGif ? "object-cover object-center" : "object-cover object-top"
+            }`}
+            draggable={false}
+            unoptimized={isGif}
           />
         </div>
       </div>
@@ -225,6 +263,7 @@ export default function Hero() {
           </defs>
         </Wave>
       </div>
+      <EmailToast show={copied} />
     </section>
   );
 }
