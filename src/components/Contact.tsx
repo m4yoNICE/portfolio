@@ -2,6 +2,7 @@
 import { useRef, useState } from "react";
 import Reveal from "./ui/Reveal";
 import emailjs from "@emailjs/browser";
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -12,7 +13,6 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formRef.current) return;
-
     setStatus("sending");
     try {
       await emailjs.sendForm(
@@ -29,67 +29,91 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white border-t border-[#e5e0ee]">
-      <div className="max-w-5xl mx-auto px-6">
-        <Reveal>
-          <p className="text-xs font-semibold text-[#F29A30] tracking-widest uppercase mb-2">
-            Get in touch
-          </p>
-          <h2 className="font-['Sora'] text-3xl font-bold text-[#575068] mb-4">
-            Contact
-          </h2>
-          <p className="text-[#7a6f8a] text-base mb-8">
-            Open to opportunities — let&apos;s talk.
-          </p>
-        </Reveal>
-        <Reveal delay={100}>
-          <form
-            ref={formRef}
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-4 max-w-xl"
-          >
-            <input
-              type="text"
-              name="from_name"
-              placeholder="Your name"
-              required
-              className="px-4 py-3 rounded-lg border border-[#e5e0ee] text-sm text-[#1a1720] placeholder:text-[#a897b5] focus:outline-none focus:border-[#575068] transition-colors"
-            />
-            <input
-              type="email"
-              name="from_email"
-              placeholder="Your email"
-              required
-              className="px-4 py-3 rounded-lg border border-[#e5e0ee] text-sm text-[#1a1720] placeholder:text-[#a897b5] focus:outline-none focus:border-[#575068] transition-colors"
-            />
-            <textarea
-              name="message"
-              placeholder="Your message"
-              rows={5}
-              required
-              className="px-4 py-3 rounded-lg border border-[#e5e0ee] text-sm text-[#1a1720] placeholder:text-[#a897b5] focus:outline-none focus:border-[#575068] transition-colors resize-none"
-            />
-            <button
-              type="submit"
-              disabled={status === "sending"}
-              className="bg-[#575068] text-white text-sm font-medium px-6 py-3 rounded-lg hover:bg-[#464057] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              {status === "sending" ? "Sending..." : "Send Message"}
-            </button>
+    <>
+      <section
+        id="contact"
+        className="relative py-24 px-6"
+        style={{
+          backgroundColor: "#2d1f4e",
+          backgroundImage: "url('/yunjin_bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="absolute inset-0 bg-[#2d1f4e]/70 z-0" />
 
-            {status === "success" && (
-              <p className="text-sm text-green-600">
-                Message sent successfully.
-              </p>
-            )}
-            {status === "error" && (
-              <p className="text-sm text-red-500">
-                Something went wrong. Try again.
-              </p>
-            )}
-          </form>
-        </Reveal>
-      </div>
-    </section>
+        <div className="max-w-5xl mx-auto relative z-10">
+          <Reveal>
+            <p className="text-xs font-semibold text-[#cc92a8] tracking-widest uppercase mb-2">
+              Get in touch
+            </p>
+            <h2 className="font-['Sora'] text-3xl font-bold text-[#E1D8EF] mb-4">
+              Contact
+            </h2>
+            <p className="text-[#c4b8d4] text-base mb-8">
+              Open to opportunities — let&apos;s talk.
+            </p>
+          </Reveal>
+
+          <Reveal delay={100}>
+            <form
+              ref={formRef}
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-4 max-w-xl"
+            >
+              <input
+                type="text"
+                name="from_name"
+                placeholder="Your name"
+                required
+                className="px-4 py-3 rounded-lg border border-[#cc92a8]/40 bg-[#ffffff0d] text-[#E1D8EF] text-sm placeholder:text-[#8b6ba8] focus:outline-none focus:border-[#cc92a8] transition-colors"
+              />
+              <input
+                type="email"
+                name="from_email"
+                placeholder="Your email"
+                required
+                className="px-4 py-3 rounded-lg border border-[#cc92a8]/40 bg-[#ffffff0d] text-[#E1D8EF] text-sm placeholder:text-[#8b6ba8] focus:outline-none focus:border-[#cc92a8] transition-colors"
+              />
+              <textarea
+                name="message"
+                placeholder="Your message"
+                rows={5}
+                required
+                className="px-4 py-3 rounded-lg border border-[#cc92a8]/40 bg-[#ffffff0d] text-[#E1D8EF] text-sm placeholder:text-[#8b6ba8] focus:outline-none focus:border-[#cc92a8] transition-colors resize-none"
+              />
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="bg-[#cc92a8] text-[#2d1f4e] text-sm font-bold px-6 py-3 rounded-lg hover:bg-[#d9a8bc] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {status === "sending" ? "Sending..." : "Send Message"}
+              </button>
+
+              {status === "success" && (
+                <p className="text-sm text-[#cc92a8]">
+                  Message sent successfully.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-sm text-red-400">
+                  Something went wrong. Try again.
+                </p>
+              )}
+            </form>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="relative py-6 px-6 bg-[#3b2c5f]">
+        <div className="max-w-5xl mx-auto flex items-center justify-center">
+          <p className="text-xs text-[#F29A30]">
+            © 2026 Roswell Ceniza&apos;s Portfolio
+          </p>
+        </div>
+      </footer>
+    </>
   );
 }
