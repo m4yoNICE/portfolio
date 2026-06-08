@@ -107,7 +107,7 @@ export default function Contact() {
       </section>
 
       {/* Footer */}
-      <footer className="relative py-6 px-6 bg-[#3b2c5f]">
+      <footer className="relative py-6 px-6 bg-[#3d2e61]">
         <div className="max-w-5xl mx-auto flex items-center justify-center">
           <p className="text-xs text-[#F29A30]">
             © 2026 Roswell Ceniza&apos;s Portfolio
